@@ -1,0 +1,58 @@
+Week 1 Day 3
+bootstrap
+
+stretch goals?
+bootstrap grid system
+
+css library for developers
+
+bootstrap grid system
+
+container holds grids
+grids contain rows
+grids = flexbox containers
+12 size units within rows
+rows are display flex by default
+columns within rows 
+each row can have their own columns with their own html
+can't have more than 12 columns
+medium screen size = 768px
+
+making things disappear when going to mobile !important
+
+first class in javascript is column 
+>SECTION - 
+no columns inside columsn or rows inside rows
+alt shift down copies code 
+
+style in between head and body "neck" 
+add style class to body
+
+margin class in bootstrap
+mx -- move things along x axis
+my -- move along y axis
+
+no margin on x axis column
+
+can add padding though
+to add padding p- (1-5)
+
+font size = fs (1-5)
+
+font weight = fw
+
+to make breakpoint
+add to class -- col-12 col-md-6
+div class d-none d-md-block col-6
+
+header class container-fluid sticky-top
+
+img-fluid -- do not spill image
+rounded class -- round img border
+
+col-12 col-md-6 col-lg-4
+
+bootstrap button classes
+btn 
+
+remove debug class when done
