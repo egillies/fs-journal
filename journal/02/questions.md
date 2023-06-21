@@ -1,57 +1,62 @@
 # Intro to JavaScript
-01. Which keywords are used to declare a variable in JavaScript?
 
-    > | ANSWER HERE |
+1.  Which keywords are used to declare a variable in JavaScript?
 
-02. What is the definition of a function?
+    let, const, var (old)
 
-    > | ANSWER HERE |
+2.  What is the definition of a function?
 
-03. What are the `SOLID` principles?
+    block of code used to perform a particular task
 
-    > | ANSWER HERE |
+3.  What are the `SOLID` principles?
 
-04. Given this array: How could you remove the `pineapple`?
+    single responsibility, open closed, liskov substistution, interface integration, dependency inversion
+
+4.  Given this array: How could you remove the `pineapple`?
 
     ```js
-    let fruit = ['apple', 'banana', 'pineapple', 'orange', 'strawberry']
+    let fruit = ["apple", "banana", "pineapple", "orange", "strawberry"];
     ```
 
-    > | ANSWER HERE |
+    splice method
 
-05. Given these two objects: How could you add each to the others friends arrays?
+5.  Given these two objects: How could you add each to the others friends arrays?
 
     ```js
     let you = {
-        name: "You",
-        hair: true,
-        friends: []
-    }
+      name: "You",
+      hair: true,
+      friends: [],
+    };
     let them = {
-        name: "Them",
-        hair: false,
-        friends: []
-    }
+      name: "Them",
+      hair: false,
+      friends: [],
+    };
     ```
 
-    > | ANSWER HERE |
+    array.push
 
-06. Give an example of a JavaScript `Conditional`:
+6.  Give an example of a JavaScript `Conditional`:
 
-    > | ANSWER HERE |
+    if (hour < 12) {
+    console.log("good morning")
+    }
 
-07. What is the main difference between `parameters` and `arguments`?
+7.  What is the main difference between `parameters` and `arguments`?
 
-    > | ANSWER HERE |
+    a parameter is a name created in a function definition
+    an argument is the value each function derives from the parameter when the function is invoked
 
-08. Instead of writing everything to the console, what is a better way to debug your code?
+8.  Instead of writing everything to the console, what is a better way to debug your code?
 
-    > | ANSWER HERE |
+    testing it in the web browser
 
-09. What is the difference between a `primitive` value and a `reference` value?
+9.  What is the difference between a `primitive` value and a `reference` value?
 
-    > | ANSWER HERE |
+    primitive value is data that is not a function and has no methods or properties
+    reference value inclues array, object, and function
 
 10. Demonstrate a loop that prints the numbers between -100 and 100?
 
-    > | ANSWER HERE |
+    for(let i = 0; i < 101; i++);
