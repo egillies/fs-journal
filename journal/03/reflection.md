@@ -334,3 +334,125 @@ AppState.emit(newCars)
     }
 
 }
+
+//SECTION week 3 day 4 notes
+
+building confidential project
+
+models
+//NOTE create Case.js -->
+
+export class {Case
+
+constructor (data) {
+
+this.id = generateId()
+this.report = data.report
+this.agency = data.agency
+this.reportedDate = this.reportedDate
+this.unlocked = data.unlocked
+}
+
+get ListTemplate(){
+return `<p onclick="">${this.agency}</p>`
+}
+
+}
+
+//NOTE Case.js --> Appstate.js
+
+cases = [
+new Case ({
+report: "There was an RV.",
+Agency: '🦄'
+}),
+new Case ({
+report: "There was an RV.",
+Agency: '🦄'
+}),
+new Case ({
+report: "There was an RV.",
+Agency: '🦄'
+}),
+
+]
+
+//NOTE back to Case.js
+
+CHANGE
+
+this.reportedDate = data.reportedDate ? newDate(data.reportedDate) : newDate()
+
+CHANGE
+
+this.unlocked = data.unlocked ? data.unlocked : false
+
+CHANGE
+
+this.report = data.report || 'no report'
+
+
+
+//NOTE create CasesController.js
+
+function \_drawCaseList(){
+    const cases = AppState.cases
+    let template = ''
+    cases.forEach(c => template += c.ListTemplate)
+    setHTML('case-list', template)
+}
+
+export class CasesController{
+    constructor(){
+    console.log('case controller loaded')
+}
+}
+
+setActiveCase(caseId)
+
+function _drawActiveCase(){
+
+}
+
+//NOTE update router
+can either remove "HomeController" or add "CasesController" to controller
+
+//NOTE create CasesServices
+
+class CasesService {
+
+}
+export const CasesService
+
+//NOTE Case.js
+
+get ListTemplate(){
+    return `<p onclick="app.CasesController.setActiveCase('${this.id}')">${}
+}
+
+get ActiveTemplate(){
+    return `<p>
+}
+ 
+get computedRedactedReport(){
+    let arr = this.report.split(' ')
+
+    let mapped = arr.map(word => {
+        if (_badWords.includes(word.toLowerCase())){
+            return 'emoji'
+        }
+        return word
+    })
+    return mapped.join(' ')
+}
+
+spread operator
+
+
+
+
+
+
+//NOTE Case.js --> CasesController.js
+add function setActive Case
+
