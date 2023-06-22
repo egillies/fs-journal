@@ -274,7 +274,7 @@ cars = [
 //NOTE -
 AppState-->CarsController
 
-function \_drawars(){
+function \_drawCars(){
 const cars = AppState.cars
 let template = ''
 
