@@ -359,6 +359,8 @@ return `<p onclick="">${this.agency}</p>`
 
 }
 
+
+
 //NOTE Case.js --> Appstate.js
 
 cases = [
@@ -448,6 +450,13 @@ get computedRedactedReport(){
 
 spread operator
 
+init () {
+    this.cases = loadState('cases', [Case])
+}
+
+onblur="app.Cases.Controller.lockCase()"
+
+onfocus=""
 
 
 
@@ -455,4 +464,9 @@ spread operator
 
 //NOTE Case.js --> CasesController.js
 add function setActive Case
+
+
+//SECTION - model create Player.js
+export classPlayer
+
 
