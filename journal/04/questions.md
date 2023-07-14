@@ -18,6 +18,7 @@ allows an unlimited amount of arguments
 
 > | ANSWER HERE |
 
+
 5.  What is a `promise`? How do you capture an error from a `promise`?
 
 > waiting for a different piece of code to run
