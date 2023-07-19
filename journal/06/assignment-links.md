@@ -1,6 +1,7 @@
 ## Afternoon Assignment Links
 
-* **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
-* **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
-* **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
-* **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
+https://github.com/egillies/vue-playground
+
+- **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
+- **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
+- **[Repo](https://github.com/egillies/<ASSIGNMENT_REPO>)**
