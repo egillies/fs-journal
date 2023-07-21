@@ -2,29 +2,30 @@
 
 1.  What is the entrypoint of an application?
 
-> | ANSWER HERE |
+resource that is accesspoint to the application
 
 2.  What is the difference between a vue `component` and `page`?
 
-> | ANSWER HERE |
+component is a small feature that makes up part of the UI 
+
+page is a new part of the application
 
 3.  What is **_Component-Based Architecture_**?
 
-> | ANSWER HERE |
+a method for encapuslating larger pieces of UI into independent micro systems 
 
 4.  What are the three tags that make up a Vue component?
 
-> | ANSWER HERE |
+script, template,
 
 5.  What are **_lifecycle hooks_**? What are lifecycle hooks used for?
 
-> | ANSWER HERE |
+window into how library works behind the scenes
 
 6.  Which component in Vue does the vue-router use to mount pages onto?
+index.html
 
-> | ANSWER HERE |
-
-7.  What is the difference between the `AppState` and the state object within a component?
+7.  What is the difference beteen the `AppState` and the state object within a component?
 
 > | ANSWER HERE |
 
@@ -34,11 +35,13 @@
 
 9.  What are **_props_** and how are they used? Provide an example
 
-> | ANSWER HERE |
+how to pass variables and other variables to other compenents
+
+
 
 10. What is the Vue method used to create watchable objects such as `state` or `AppState`?
 
-> | ANSWER HERE |
+watchEffect
 
 WEEK 6 DAY 2 NOTES
 
