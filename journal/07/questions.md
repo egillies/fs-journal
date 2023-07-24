@@ -69,11 +69,25 @@ import { schema }
 don't need id
 
 export const AlbumSchema = new Schema({
+
   title: {type: String, required: true, maxLength: 75, minLength: 3},
+
   archived: {type: Boolean, default: false},
+
   coverImg: {type: String, required: true, maxLength: 250, minLength: 3},
-  category: {type: String, enum: ['cats', 'dogs', 'games', 'gachamon', 'misc'], required: true, default: 'misc'},
-  creatorId: {type: Schmea.Types.ObjectId, required: true, ref: 'Account'}
+
+  category: {type: String, enum: ['cats', 'dogs', 'games', 'gachamon', 'animals', 'misc'], required: true, default: 'misc'},
+
+  creatorId: {type: Schmea.Types.ObjectId, required: true, ref: 'Account'},
+
+ADD VIRTUALS
+
+AlbumSchema.virtual('creator', {
+  localField: 'creatorId',
+  foreignField: _id,
+  justOne: true,
+})
+
 })
 
 //NOTE Dbcontext.js
@@ -88,12 +102,15 @@ Albums = mongoose.model
 
 import BaseController
 
-CREATE FUNCTIONS IN POSTMAN ORDER 
+//NOTE CREATE FUNCTIONS IN POSTMAN ORDER 
 
 export class AlbumsController extends BaseController {
   constructor(){
     super('api/albums')
     this.router
+
+    .get('', this.getAlbums)
+
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.createAlbum)
   }
@@ -102,21 +119,45 @@ export class AlbumsController extends BaseController {
     try {
       const albumData = req.body
       albumData.creatorId = req.userInfo.id
-      const album = await AlbumsService.createAlbum(albumData)
+      const album = await AlbumsService.createAlbum(albumData).populate('creator', 'name picture')
+      //NOTE await newAlbum.populate('creator', 'name picture')
     } catch (error){
       next(error)
     } 
+  }
+
+  async getAlbums(req, res, next) {
+    try {
+      const albums 
+    } catch(error)
+  } next(error)
+}
+
+async getAlbumById (req, res, next){
+  try {
+    const albumId = req.params.albumId
+    const album = await albumsService.getAlbumById
   }
 }
 
 //NOTE albumServices.js
 
 class AlbumsService {
+
   async createAlbum(albumData){
     const newAlbum = await dbContext.Albums.create(albumData)
     return newAlbum
   }
 
+  async getAlbums(){
+    const albums = await dbContext.Albums.find().populate('creator', 'name picture')
+    return albums
+  }
+
+  async getAlbumById(albumId){
+    const album = await dbContext.Albums.findById(albumId).populate('creator', 'name picture')
+  }
 }
+
 
 export const albumsService = new AlbumsService()
