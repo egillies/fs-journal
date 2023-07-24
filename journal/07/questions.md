@@ -438,4 +438,10 @@ async archiveAlbum(){
 
 //NOTE when page reloads it reloads onMounted
 
+//NOTE AlbumDetailsPage.vue
+
+watchEffect(() => {
+  getAlbumById(route.params.albumId)
+})
+
 
