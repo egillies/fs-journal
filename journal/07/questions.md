@@ -110,9 +110,11 @@ export class AlbumsController extends BaseController {
     this.router
 
     .get('', this.getAlbums)
+    .get('/:albumId', this.getAlbumById)
 
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.createAlbum)
+    .delete('/:albumId,')
   }
 
   async createAlbum(req, res, next){
@@ -121,6 +123,7 @@ export class AlbumsController extends BaseController {
       albumData.creatorId = req.userInfo.id
       const album = await AlbumsService.createAlbum(albumData).populate('creator', 'name picture')
       //NOTE await newAlbum.populate('creator', 'name picture')
+      return res.send(album)
     } catch (error){
       next(error)
     } 
@@ -137,6 +140,14 @@ async getAlbumById (req, res, next){
   try {
     const albumId = req.params.albumId
     const album = await albumsService.getAlbumById
+    return res.send(album)
+  }catch(error)
+  next(error)
+}
+
+async archiveAlbum (req, res, next){
+  try {
+
   }
 }
 
@@ -156,7 +167,24 @@ class AlbumsService {
 
   async getAlbumById(albumId){
     const album = await dbContext.Albums.findById(albumId).populate('creator', 'name picture')
+    if(!album){
+      throw new BadRequest(`Album at albumId: ${albumId} does not exist.`)
+    }
+    return album
   }
+}
+
+async archiveAlbum(albumId){
+  const albumToArchive = await this.getAlbumById(albumId)
+
+//NOTE .toString to prevent errors
+  if(albumToArchive.creatorId.toString() != userId) {
+    throw new Forbidden('You are not the creator of this album')
+  }
+
+  albumToArchive.archived = true
+  await albumToArchive.save()
+  return albumTOArchive
 }
 
 
