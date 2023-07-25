@@ -444,4 +444,423 @@ watchEffect(() => {
   getAlbumById(route.params.albumId)
 })
 
+//SECTION day 2 backend
 
+//NOTE create picture schema
+
+pictureSchema
+
+export const pictureSchema = new Schema
+
+//NOTE DbContext.js
+
+register PictureSchema.js
+
+//NOTE create PictureConroller
+
+//NOTE create PictureService
+
+//NOTE Picturecontroller 
+
+export class PicturesController extends BaseController
+
+constructor(){
+  super('api/pictures'){
+    this.router
+
+    .use(Auth0Provider.getAuthorizedUserInfo)
+    .post('', this.createPicture)
+  }
+
+  async createPicture(req, res, next){
+    const pictureData = req.body
+    pictureData.creatorId = req.userInfo.id
+
+    const picture = await picturesService.createPicture(pictureData)
+
+    return res.send
+  }
+}
+
+//NOTE PicturesService{
+
+async createPicture(pictureData){
+  const picture = await dbContext.Pictures.create(pictureData)
+  await picture.populate('creator', 'name picture')
+  return picture
+}
+}
+
+//NOTE PicturesController.js
+
+.get('/:albumId/pictures', this.getPicturesByAlbumId)
+
+async getPicturesByAlbumId (req, res, next){
+  try {
+    const albumId = req.params.albumId
+    const pictures = await picturesService.getPicturesByAlbumId(albumId)
+    return res.send(pictures)
+  } catch (error)
+}
+
+//NOTE PicturesService.js
+
+async getPicturesByAlbumId(albumId){
+
+}
+
+//SECTION front end side
+
+//NOTE need to land on AlbumDetailsPage.vue
+
+async function getPicturesByAlbumId(albumId){
+  try {
+const albumId = route.params.albumId
+await getPicturesByAlbumId.picturesService
+
+  } catch (error){
+    logger.error(error)
+
+  }
+}
+
+//NOTE PicturesService
+
+class PicturesService {
+
+async getPicturesByAlbumId(albumId)
+}
+
+export const picturesService = new PicturesService()
+
+//NOTE back to AlbumDetailsPage.vue
+finish writing function
+
+//NOTE picturesService
+
+async getPicturesByAlbumId(albumId){
+  const res = await api.get(`api/albums${albumId}/pictures`)
+  logger.log('[GETTING PICTURES BY ALBUM ID]', res.data);
+}
+
+//NOTE in picturesService
+
+watchEffect (() =>){
+  getAlbumById(route.params.albumId)
+}
+
+//NOTE router.js
+
+path:'/albums/:albumId'
+beforeEnter: authSettled
+
+//NOTE picture.js
+
+create model
+
+//NOTE AppState.js
+
+pictures: [],
+
+//NOTE PicturesService.js
+
+AppState.pictures = res.data.map(d => new Picture(d))
+
+//NOTE AlbumDetailsPage.vue
+
+return {
+  album: computed(() => AppState.activeAlbum),
+  pictures: computed(() => AppState.pictures)
+}
+
+//NOTE App.vue
+
+import ModalComponent
+
+<template #header>
+Create Picture </template>
+
+<template #body> Create Picture </template>
+
+</Modal Component>
+
+//NOTE AlbumDetailsPage.vue
+
+add button to target modal
+
+//NOTE App.vue
+
+two Modal Componenents
+
+give each ids
+
+//NOTE PictureForm.vue
+
+const editable = ref ({})
+const route = useRoute()
+return {
+  editable {
+
+  }
+}
+
+add "v-model editable.img"
+
+form @submit.event="createPicture()"
+
+async CreatePicture( {
+  add const formData = editable.value
+  logger.log(formdata, 'form data object')
+  formData.albumId = route.params.albumId
+  await picturesService.createPicture(formData)
+
+  editable.value = {}
+  Modal.getOrCreateInstance('#createPictureInstance').hide()
+})
+
+
+//NOTE picturesService
+
+async createPicture(formData){
+  const res = await api.post('api/pictures', formData)
+  logger.log('[CREATING PICTURE]', res.data);
+
+}
+
+//NOTE PictureForm.vue
+
+v-model="editable.imgUrl"
+
+make changes to modal
+
+//NOTE PicturesService
+
+in async CreatePicture
+const newPicture = new Picture(res.data)
+Appstate.pictures.unshift(newPicture)
+
+//NOTE albumForm.vue
+
+button to open the modal
+
+button :disabled="album.archived"
+
+//SECTION backend
+
+//NOTE PicturesServices (in server)
+
+async createPicture(pictureData){
+  const album = await albumsService.getAlbumById(pictureData.albumId)
+
+  if(album.archived == true){
+    throw new Forbidden(`${album.title} has been archived. You cannot create a picture in an archived album.`)
+  }
+}
+
+//NOTE Collaborator.js model
+
+export const CollaboraterSchema = new Schema ({
+  albumId
+})
+
+//NOTE DbContext
+
+add Collaborators Schema
+
+//NOTE CollaboratorsController
+
+//NOTE CollaboratorsService
+
+//NOTE CollaboratorsController
+
+export class CollaboratorsController extends BaseController
+
+this.router
+
+.use(Auth0Provider,getAuthorizedUserInfo)
+.post('', this.createCollab)
+
+async createCollab(req, res, next){
+  try {
+    const collabData = req.body
+    collab.accountId = req.userInfo.id
+    const collab = await collaboratorsService.createCollab(collabData)
+    return res.send()
+  }catch(error){
+    next(error)
+  }
+}
+
+//NOTE CollaboraborsService
+
+async createCollab(collabdata){
+  const album = await albumsService.getAlbumById(collabData.albumId)
+
+  if (album.archived == true )
+}
+
+//NOTE CollaboratorsController
+
+async getCollaboratorsByAlbumId (req, res, next){
+
+}
+
+//NOTE collaborators service
+
+async getCollaboratersByAlbumId(albumId){
+  const collaborators = 
+}
+
+//NOTE Account controller
+
+async getMyCollabAlbums
+
+//NOTE collaborators service
+
+async getMyCollabAlbums(accountId){
+
+}
+
+//NOTE CollaboratorController
+
+async delete Collab(req, res, next)
+
+//NOTE Collaborates Service
+
+async deleteCollab(collabId, userId){
+  const 
+}
+//SECTION front end again
+
+//NOTE AlbumDetailPage.vue
+
+async function getCollaboratorsByAlbumId(){
+
+}
+
+//NOTE CollaboratorsService
+
+async getCollaboratorByAlbumId(albumId){
+  const res = await api.get(`api/albums/${albumId}/collaborators`)
+  logger.log('[getting collabs]', res.data)
+}
+
+//NOTE AlbumDetailsPage.vue 
+
+watchEffecct
+
+ADD getCollaboratersByAlbumId
+
+//NOTE Collaborator (model)
+
+create model
+
+//NOTE AppState
+
+albumCollabs: []
+save to AppState
+
+//NOTE CollaboraterService.js
+
+async getCollaboratorByAlbumId(albumId){
+}
+
+//NOTE AlbumDetailsPage.vue
+
+return {
+  collaborators: computed
+
+  async becomeCollaborator(){
+    async try{
+
+      logger.log('become collab')
+      const activeAlbumId = route.params.albumId
+
+      const collabData = {albumId: activeAlbumId}
+      await collaboratorService.becomeCollaborater(collabData)
+      AppState.activeAlbum.memberCount++
+  }
+}
+}
+
+add collaborators to template
+
+button @click="becomeCollaborator"
+
+button @click="removeCollaborator"
+
+//NOTE collaboratorService
+
+async become Collaborator(collabData){
+  const res = await api.
+
+  AppState.albumCollabs.push(new Collaborator(res.data))
+}
+ async removeCollaborator()
+
+return{
+  isCollaborator: computed(() => {
+    return AppState.albumCollabs.find(c => c.accountId == AppState.account.id)
+  })
+}
+
+//NOTE collaboratorService
+
+async removeCollabotor(){
+  try {
+    logger.log('removing collab')
+
+    const collaboratorToRemove = AppState.albumCollabs.find(c => c.acccount.Id == AppState.account.id)
+
+    await collaboratorsService.removeCollaborator
+  }
+}
+//NOTE AlbumCard.vue
+under {{ albumProp.membercount }}
+
+//NOTE AuthService.js
+AuthService.on
+
+await = collaboratorsService.getMyCollabAlbums()
+
+//NOTE Collaborators Service
+
+async getMyCollabAlbums(){
+  try {
+  const res = await api.get('account/collaborators')
+  logger.log('[get my albums]', res.data)
+    AppState.myCollabs = res.data.map 
+  }
+}
+
+//NOTE collaborator model
+
+add this.album = data.album
+
+//NOTE HomePage.vue
+
+<AlbumCard :albumProp="c.album" />
+this is called "albumProp" because that is what we named it in ALBUMCARD
+
+return {
+  myCollabs: 
+}
+
+//NOTE AlbumCard change to "album" to Object
+
+//NOTE HomePage.vue
+
+setup(){
+  const filterBy = ref('')
+}
+
+return {
+  filterBy,
+  albums: computed(() => {
+    if(filterBy.value = ""){
+      return AppState.albums
+    } else {
+      return AppState.albums.filter(a => a.category == filterBy.value)
+    }
+  }), 
+}
