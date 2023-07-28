@@ -2,23 +2,23 @@
 
 1. Describe the two ways to bind Data in Vue?
 
-> | ANSWER HERE |
+data binding via importing properties and parent child elements and watchEffects
 
 2. The `SPA` acronym stands for what?
 
-> | ANSWER HERE |
+single parent application
 
 3. What are some of the advantages/uses of a `SPA` over a traditional one?
 
-> | ANSWER HERE |
+reduces load time
 
 4. What does the `onMounted` method in Vue do?
 
-> | ANSWER HERE |
+runs application on page load
 
 5. What is the `v-model` attribute in Vue for, and when might you use it?
 
-> | ANSWER HERE |
+binds properties from parent and child elements
 
 6. What is the package.json file used for?
 
@@ -26,15 +26,15 @@
 
 7. Which Vue attributes(directives) could you use to conditionally render elements on a page?
 
-> | ANSWER HERE |
+forloops, models, if statements
 
 8. What is the purpose of the `key` attribute when using `v-for` on an element?
 
-> | ANSWER HERE |
+binding a certain part of an element
 
 9. What is the `<slot>` element and what is it used for?
 
-> | ANSWER HERE |
+reusing part of an element
 
 <!--NOTE full stack application notes-->
 
@@ -299,15 +299,15 @@ ANYTHING IN THe ALBUMCARD WILL NEED TO BE albumProp
 <h2> {{albumProp.title}} </2
 
 props: {
-  albumProp: {tyle: Album, required: true }
+albumProp: {tyle: Album, required: true }
 }
 
 setup(){
-  function getRandomColor(){
-    const colors = ['bg-primary', 'bg-success', 'bg-warning', 'bg-secondary', 'bg-info', 'bg-danger']
-    const randomIndex = Math.floor(Math.random() * colors.length)
-    return colors[randomIndex]
-  }
+function getRandomColor(){
+const colors = ['bg-primary', 'bg-success', 'bg-warning', 'bg-secondary', 'bg-info', 'bg-danger']
+const randomIndex = Math.floor(Math.random() \* colors.length)
+return colors[randomIndex]
+}
 }
 
 //NOTE AlbumDetailsPage.vue
@@ -325,21 +325,21 @@ component
 //NOTE AlbumDetailsPage.vue
 
 setup(){
-  const route = use route()
-  
-  function getAlbumById(){
-    try {
-      const albumId = rout.params.albumId
-      await albumsService.getAlbumById(albumId)
-    }
-  }
+const route = use route()
+
+function getAlbumById(){
+try {
+const albumId = rout.params.albumId
+await albumsService.getAlbumById(albumId)
+}
+}
 }
 
 //NOTE AlbumsService.js
 
 async get AlbumById(albumId){
-  const res = await api.get(`api/albums/${albumId}`)
-  logger.log('[GOT ONE ALBUM]', res.data)
+const res = await api.get(`api/albums/${albumId}`)
+logger.log('[GOT ONE ALBUM]', res.data)
 }
 
 //NOTE AppState
@@ -349,7 +349,7 @@ activeAlbum: null,
 
 //NOTE AlbumDetailsPage
 
-return: 
+return:
 computed(()
 )
 
@@ -379,12 +379,10 @@ option selected value=""
 option v-for="category in catefories"
 
 sectup(){
-  return{
-    categories: ['cats', 'dogs']
-  }
+return{
+categories: ['cats', 'dogs']
 }
-
-
+}
 
 //NOTE ModalComponent.vue
 
@@ -410,11 +408,11 @@ router.push({name: 'Album', params: {albumId: album.id }})
 
 const route = useRoute()
 return {
-  route,
-  account: computed(()=> AppState.activeAlbum)
-  async archiveAlbum(){
-    try {
-      const wantsToArchive = await Pop.confirm
+route,
+account: computed(()=> AppState.activeAlbum)
+async archiveAlbum(){
+try {
+const wantsToArchive = await Pop.confirm
 
       if(!wantsToArchive){
       return
@@ -424,7 +422,8 @@ return {
 
       await albumsService.archiveAlbum
     } catch
-  } error
+
+} error
 }
 
 route.name
@@ -432,8 +431,8 @@ route.name
 //NOTE AlbumsService.js
 
 async archiveAlbum(){
-  const res = await api.delete(`api/albums/${albumId}`)
-  logger.log('deleted album', res.data);
+const res = await api.delete(`api/albums/${albumId}`)
+logger.log('deleted album', res.data);
 }
 
 //NOTE when page reloads it reloads onMounted
@@ -441,7 +440,7 @@ async archiveAlbum(){
 //NOTE AlbumDetailsPage.vue
 
 watchEffect(() => {
-  getAlbumById(route.params.albumId)
+getAlbumById(route.params.albumId)
 })
 
 //SECTION day 2 backend
@@ -460,34 +459,36 @@ register PictureSchema.js
 
 //NOTE create PictureService
 
-//NOTE Picturecontroller 
+//NOTE Picturecontroller
 
 export class PicturesController extends BaseController
 
 constructor(){
-  super('api/pictures'){
-    this.router
+super('api/pictures'){
+this.router
 
     .use(Auth0Provider.getAuthorizedUserInfo)
     .post('', this.createPicture)
-  }
 
-  async createPicture(req, res, next){
-    const pictureData = req.body
-    pictureData.creatorId = req.userInfo.id
+}
+
+async createPicture(req, res, next){
+const pictureData = req.body
+pictureData.creatorId = req.userInfo.id
 
     const picture = await picturesService.createPicture(pictureData)
 
     return res.send
-  }
+
+}
 }
 
 //NOTE PicturesService{
 
 async createPicture(pictureData){
-  const picture = await dbContext.Pictures.create(pictureData)
-  await picture.populate('creator', 'name picture')
-  return picture
+const picture = await dbContext.Pictures.create(pictureData)
+await picture.populate('creator', 'name picture')
+return picture
 }
 }
 
@@ -496,11 +497,11 @@ async createPicture(pictureData){
 .get('/:albumId/pictures', this.getPicturesByAlbumId)
 
 async getPicturesByAlbumId (req, res, next){
-  try {
-    const albumId = req.params.albumId
-    const pictures = await picturesService.getPicturesByAlbumId(albumId)
-    return res.send(pictures)
-  } catch (error)
+try {
+const albumId = req.params.albumId
+const pictures = await picturesService.getPicturesByAlbumId(albumId)
+return res.send(pictures)
+} catch (error)
 }
 
 //NOTE PicturesService.js
@@ -514,14 +515,14 @@ async getPicturesByAlbumId(albumId){
 //NOTE need to land on AlbumDetailsPage.vue
 
 async function getPicturesByAlbumId(albumId){
-  try {
+try {
 const albumId = route.params.albumId
 await getPicturesByAlbumId.picturesService
 
-  } catch (error){
-    logger.error(error)
+} catch (error){
+logger.error(error)
 
-  }
+}
 }
 
 //NOTE PicturesService
@@ -539,14 +540,14 @@ finish writing function
 //NOTE picturesService
 
 async getPicturesByAlbumId(albumId){
-  const res = await api.get(`api/albums${albumId}/pictures`)
-  logger.log('[GETTING PICTURES BY ALBUM ID]', res.data);
+const res = await api.get(`api/albums${albumId}/pictures`)
+logger.log('[GETTING PICTURES BY ALBUM ID]', res.data);
 }
 
 //NOTE in picturesService
 
 watchEffect (() =>){
-  getAlbumById(route.params.albumId)
+getAlbumById(route.params.albumId)
 }
 
 //NOTE router.js
@@ -569,8 +570,8 @@ AppState.pictures = res.data.map(d => new Picture(d))
 //NOTE AlbumDetailsPage.vue
 
 return {
-  album: computed(() => AppState.activeAlbum),
-  pictures: computed(() => AppState.pictures)
+album: computed(() => AppState.activeAlbum),
+pictures: computed(() => AppState.pictures)
 }
 
 //NOTE App.vue
@@ -599,9 +600,9 @@ give each ids
 const editable = ref ({})
 const route = useRoute()
 return {
-  editable {
+editable {
 
-  }
+}
 }
 
 add "v-model editable.img"
@@ -609,21 +610,20 @@ add "v-model editable.img"
 form @submit.event="createPicture()"
 
 async CreatePicture( {
-  add const formData = editable.value
-  logger.log(formdata, 'form data object')
-  formData.albumId = route.params.albumId
-  await picturesService.createPicture(formData)
+add const formData = editable.value
+logger.log(formdata, 'form data object')
+formData.albumId = route.params.albumId
+await picturesService.createPicture(formData)
 
-  editable.value = {}
-  Modal.getOrCreateInstance('#createPictureInstance').hide()
+editable.value = {}
+Modal.getOrCreateInstance('#createPictureInstance').hide()
 })
-
 
 //NOTE picturesService
 
 async createPicture(formData){
-  const res = await api.post('api/pictures', formData)
-  logger.log('[CREATING PICTURE]', res.data);
+const res = await api.post('api/pictures', formData)
+logger.log('[CREATING PICTURE]', res.data);
 
 }
 
@@ -650,17 +650,17 @@ button :disabled="album.archived"
 //NOTE PicturesServices (in server)
 
 async createPicture(pictureData){
-  const album = await albumsService.getAlbumById(pictureData.albumId)
+const album = await albumsService.getAlbumById(pictureData.albumId)
 
-  if(album.archived == true){
-    throw new Forbidden(`${album.title} has been archived. You cannot create a picture in an archived album.`)
-  }
+if(album.archived == true){
+throw new Forbidden(`${album.title} has been archived. You cannot create a picture in an archived album.`)
+}
 }
 
 //NOTE Collaborator.js model
 
 export const CollaboraterSchema = new Schema ({
-  albumId
+albumId
 })
 
 //NOTE DbContext
@@ -681,22 +681,22 @@ this.router
 .post('', this.createCollab)
 
 async createCollab(req, res, next){
-  try {
-    const collabData = req.body
-    collab.accountId = req.userInfo.id
-    const collab = await collaboratorsService.createCollab(collabData)
-    return res.send()
-  }catch(error){
-    next(error)
-  }
+try {
+const collabData = req.body
+collab.accountId = req.userInfo.id
+const collab = await collaboratorsService.createCollab(collabData)
+return res.send()
+}catch(error){
+next(error)
+}
 }
 
 //NOTE CollaboraborsService
 
 async createCollab(collabdata){
-  const album = await albumsService.getAlbumById(collabData.albumId)
+const album = await albumsService.getAlbumById(collabData.albumId)
 
-  if (album.archived == true )
+if (album.archived == true )
 }
 
 //NOTE CollaboratorsController
@@ -708,7 +708,7 @@ async getCollaboratorsByAlbumId (req, res, next){
 //NOTE collaborators service
 
 async getCollaboratersByAlbumId(albumId){
-  const collaborators = 
+const collaborators =
 }
 
 //NOTE Account controller
@@ -728,7 +728,7 @@ async delete Collab(req, res, next)
 //NOTE Collaborates Service
 
 async deleteCollab(collabId, userId){
-  const 
+const
 }
 //SECTION front end again
 
@@ -741,11 +741,11 @@ async function getCollaboratorsByAlbumId(){
 //NOTE CollaboratorsService
 
 async getCollaboratorByAlbumId(albumId){
-  const res = await api.get(`api/albums/${albumId}/collaborators`)
-  logger.log('[getting collabs]', res.data)
+const res = await api.get(`api/albums/${albumId}/collaborators`)
+logger.log('[getting collabs]', res.data)
 }
 
-//NOTE AlbumDetailsPage.vue 
+//NOTE AlbumDetailsPage.vue
 
 watchEffecct
 
@@ -768,10 +768,10 @@ async getCollaboratorByAlbumId(albumId){
 //NOTE AlbumDetailsPage.vue
 
 return {
-  collaborators: computed
+collaborators: computed
 
-  async becomeCollaborator(){
-    async try{
+async becomeCollaborator(){
+async try{
 
       logger.log('become collab')
       const activeAlbumId = route.params.albumId
@@ -779,7 +779,8 @@ return {
       const collabData = {albumId: activeAlbumId}
       await collaboratorService.becomeCollaborater(collabData)
       AppState.activeAlbum.memberCount++
-  }
+
+}
 }
 }
 
@@ -792,28 +793,29 @@ button @click="removeCollaborator"
 //NOTE collaboratorService
 
 async become Collaborator(collabData){
-  const res = await api.
+const res = await api.
 
-  AppState.albumCollabs.push(new Collaborator(res.data))
+AppState.albumCollabs.push(new Collaborator(res.data))
 }
- async removeCollaborator()
+async removeCollaborator()
 
 return{
-  isCollaborator: computed(() => {
-    return AppState.albumCollabs.find(c => c.accountId == AppState.account.id)
-  })
+isCollaborator: computed(() => {
+return AppState.albumCollabs.find(c => c.accountId == AppState.account.id)
+})
 }
 
 //NOTE collaboratorService
 
 async removeCollabotor(){
-  try {
-    logger.log('removing collab')
+try {
+logger.log('removing collab')
 
     const collaboratorToRemove = AppState.albumCollabs.find(c => c.acccount.Id == AppState.account.id)
 
     await collaboratorsService.removeCollaborator
-  }
+
+}
 }
 //NOTE AlbumCard.vue
 under {{ albumProp.membercount }}
@@ -826,11 +828,11 @@ await = collaboratorsService.getMyCollabAlbums()
 //NOTE Collaborators Service
 
 async getMyCollabAlbums(){
-  try {
-  const res = await api.get('account/collaborators')
-  logger.log('[get my albums]', res.data)
-    AppState.myCollabs = res.data.map 
-  }
+try {
+const res = await api.get('account/collaborators')
+logger.log('[get my albums]', res.data)
+AppState.myCollabs = res.data.map
+}
 }
 
 //NOTE collaborator model
@@ -843,7 +845,7 @@ add this.album = data.album
 this is called "albumProp" because that is what we named it in ALBUMCARD
 
 return {
-  myCollabs: 
+myCollabs:
 }
 
 //NOTE AlbumCard change to "album" to Object
@@ -851,16 +853,16 @@ return {
 //NOTE HomePage.vue
 
 setup(){
-  const filterBy = ref('')
+const filterBy = ref('')
 }
 
 return {
-  filterBy,
-  albums: computed(() => {
-    if(filterBy.value = ""){
-      return AppState.albums
-    } else {
-      return AppState.albums.filter(a => a.category == filterBy.value)
-    }
-  }), 
+filterBy,
+albums: computed(() => {
+if(filterBy.value = ""){
+return AppState.albums
+} else {
+return AppState.albums.filter(a => a.category == filterBy.value)
+}
+}),
 }
